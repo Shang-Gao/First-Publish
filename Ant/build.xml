@@ -17,6 +17,8 @@
     <condition property="sf.sessionId" value=""> <not> <isset property="sf.sessionId"/> </not> </condition>
 	<condition property="sf.maxPoll" value=""> <not> <isset property="sf.maxPoll"/> </not> </condition>
 	<condition property="sf.serverurl" value=""> <not> <isset property="sf.serverurl"/> </not> </condition>
+	
+	<property name="sg.maxPoll" value="200" />
 
 
     <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
@@ -45,7 +47,7 @@
 	
 	<target name="deployHmAus">
       <!-- Upload the contents of the "codepkg" directory, running the tests for just 1 class -->
-      <sf:deploy username="${sf.HmAusUsername}" password="${sf.HmAusPassword}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="DeployHmAus\src" rollbackOnError="true" runAllTests="false" checkOnly="false">
+      <sf:deploy username="${sf.HmAusUsername}" password="${sf.HmAusPassword}" serverurl="${sf.serverurl}" maxPoll="${sg.maxPoll}" deployRoot="DeployHmAus\src" rollbackOnError="true" runAllTests="false" checkOnly="false">
 
       </sf:deploy>
     </target>
