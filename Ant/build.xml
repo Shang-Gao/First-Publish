@@ -30,10 +30,10 @@
     <taskdef  resource="net/sf/antcontrib/antlib.xml" 
          classpath="./lib/ant-contrib-1.0b2.jar" />
 	
-	<delete dir="@{dir}" />
-    <mkdir dir="@{dir}"/>
-    <mkdir dir="@{dir}/unpackaged"/>
-    <mkdir dir="@{dir}/standard"/>
+	<delete dir="src" />
+    <mkdir dir="src"/>
+    <mkdir dir="src/unpackaged"/>
+    <mkdir dir="src/standard"/>
  
 	
 	<target name="t11">
@@ -42,7 +42,7 @@
 	
 	<target name="retrieveHmAus">
       <sf:retrieve username="${sf.HmAusUsername}" password="${sf.HmAusPassword}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" 
-	  retrieveTarget="@{dir}\standard" unpackaged="${Ant_prj_name.basedir}/package.xml" trace="true"/>
+	  retrieveTarget="src\standard" unpackaged="${Ant_prj_name.basedir}/package.xml" trace="true"/>
     </target>
 	
 	<target name="deployHmAus">
