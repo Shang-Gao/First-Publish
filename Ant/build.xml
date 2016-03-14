@@ -1,6 +1,6 @@
 <project name="Ant_prj_name" default="test" basedir="." xmlns:sf="antlib:com.salesforce">
 
-    <property file="${Ant_prj_name.basedir}/build.properties"/>
+    <property file="./build.properties"/>
     <property environment="env"/>
 
     <!-- Setting default value for username, password and session id properties to empty string 
@@ -23,12 +23,12 @@
 
     <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
         <classpath>
-            <pathelement location="${Ant_prj_name.basedir}/ant-salesforce.jar" />        	
+            <pathelement location="./lib/ant-salesforce.jar" />        	
         </classpath>
     </taskdef>
     
     <taskdef  resource="net/sf/antcontrib/antlib.xml" 
-         classpath="${Ant_prj_name.basedir}/lib/ant-contrib-1.0b2.jar" />
+         classpath="./lib/ant-contrib-1.0b2.jar" />
 	
 	<delete dir="@{dir}" />
     <mkdir dir="@{dir}"/>
@@ -57,46 +57,4 @@
       <sf:deploy username="${sf.HmAusUsername}" password="${sf.HmAusPassword}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="Undeploy_HmAus"/>
     </target>
 	
-	
-    <!-- Shows removing code; only succeeds if done after deployCode -->
-    <target name="undeployCode">
-      <sf:deploy username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="removecodepkg"/>
-    </target>	
-
-    <!-- Shows retrieving code; only succeeds if done after deployCode -->
-    <target name="retrieveCode">
-      <!-- Retrieve the contents listed in the file codepkg/package.xml into the codepkg directory -->
-      <sf:retrieve username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" retrieveTarget="codepkg" unpackaged="codepkg/package.xml"/>
-    </target>
-
-    <!-- Shows deploying code, running all tests, and running tests (1 of which fails), and logging. -->
-    <target name="deployCodeFailingTest">
-      <!-- Upload the contents of the "codepkg" package, running all tests -->
-      <sf:deploy username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="codepkg" testLevel="RunAllTestsInOrg" rollbackOnError="true" logType="Debugonly"/>
-    </target>
-
-    <!-- Shows check only; never actually saves to the server -->
-    <target name="deployCodeCheckOnly">
-      <sf:deploy username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="codepkg" checkOnly="true"/>
-    </target>
-	
-	<!-- Shows quick deployment of recent validation. Set the property sf.recentValidationId to your recent check only deployment Id -->
-	<target name="quickDeploy">
-	  <sf:deployRecentValidation  username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" recentValidationId="${sf.recentValidationId}"/>
-	</target>
-	
-	<!-- Shows cancel deployment of deploy request either pending or in progress. Set property sf.requestId to Id of pending or in progress deploy request -->
-	<target name="cancelDeploy">
-	  <sf:cancelDeploy  username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" requestId="${sf.requestId}"/>
-	</target>
-
-	<!-- Retrieve the information of all items of a particular metadata type -->
-    <target name="listMetadata">
-      <sf:listMetadata username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}" metadataType="${sf.metadataType}"/>
-    </target>
-
-	<!-- Retrieve the information on all supported metadata type -->
-    <target name="describeMetadata">
-      <sf:describeMetadata username="${sf.username}" password="${sf.password}" sessionId="${sf.sessionId}" serverurl="${sf.serverurl}"/>
-    </target>
 </project>
