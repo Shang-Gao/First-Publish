@@ -15,6 +15,9 @@
 	
     <condition property="sf.password" value=""> <not> <isset property="sf.password"/> </not> </condition>
     <condition property="sf.sessionId" value=""> <not> <isset property="sf.sessionId"/> </not> </condition>
+	<condition property="sf.maxPoll" value=""> <not> <isset property="sf.maxPoll"/> </not> </condition>
+	<condition property="sf.serverurl" value=""> <not> <isset property="sf.serverurl"/> </not> </condition>
+
 
     <taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
         <classpath>
