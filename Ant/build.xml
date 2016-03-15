@@ -30,10 +30,7 @@
     <taskdef  resource="net/sf/antcontrib/antlib.xml" 
          classpath="./lib/ant-contrib-1.0b2.jar" />
 	
-	<delete dir="src" />
-    <mkdir dir="src"/>
-    <mkdir dir="src/unpackaged"/>
-    <mkdir dir="src/standard"/>
+
  
 	
 	<target name="t11">
