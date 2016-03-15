@@ -39,7 +39,7 @@
 	
 	<target name="retrieveHmAus">
       <sf:retrieve username="${sf.HmAusUsername}" password="${sf.HmAusPassword}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" 
-	  retrieveTarget="./src" unpackaged="./package.xml" trace="true"/>
+	  retrieveTarget="../src" unpackaged="./package.xml" trace="true"/>
     </target>
 	
 	<target name="deployHmAus">
